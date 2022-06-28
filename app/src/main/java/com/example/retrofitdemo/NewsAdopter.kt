@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class NewsAdopter(val context: Context,val article: List<Article>) : RecyclerView.Adapter<NewsAdopter.ArticleViewHolder>() {
+class NewsAdopter(private val context: Context, private val article: List<Article>) : RecyclerView.Adapter<NewsAdopter.ArticleViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
@@ -22,8 +23,10 @@ class NewsAdopter(val context: Context,val article: List<Article>) : RecyclerVie
         val article = article[position]
         holder.newsTitle.text = article.title
         holder.newsDescription.text = article.description
-        //holder.newsImage.setImageResource()
         Glide.with(context).load(article.urlToImage).into(holder.newsImage)
+        holder.itemView.setOnClickListener {
+            Toast.makeText(context, article.title, Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -32,9 +35,9 @@ class NewsAdopter(val context: Context,val article: List<Article>) : RecyclerVie
 
 
     class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var newsImage = itemView.findViewById<ImageView>(R.id.newsImage)
-        var newsTitle = itemView.findViewById<TextView>(R.id.newsTitle)
-        var newsDescription = itemView.findViewById<TextView>(R.id.newsDescription)
+        var newsImage: ImageView = itemView.findViewById(R.id.newsImage)
+        var newsTitle: TextView = itemView.findViewById(R.id.newsTitle)
+        var newsDescription: TextView = itemView.findViewById(R.id.newsDescription)
 
     }
 
