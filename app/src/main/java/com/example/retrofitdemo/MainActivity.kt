@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
                     newsList = findViewById(R.id.newsList)
                     newsList.adapter = adopter
                     newsList.layoutManager = LinearLayoutManager(this@MainActivity)
+                    //comment dd
                 }
             }
 
