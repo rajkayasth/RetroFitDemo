@@ -1,4 +1,4 @@
-package com.example.retrofitdemo
+package com.example.retrofitdemo.adopters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,6 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.retrofitdemo.R
+import com.example.retrofitdemo.models.Article
 
 class NewsAdopter(private val context: Context, private val article: List<Article>) : RecyclerView.Adapter<NewsAdopter.ArticleViewHolder>() {
 

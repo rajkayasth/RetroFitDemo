@@ -3,9 +3,11 @@ package com.example.retrofitdemo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.retrofitdemo.adopters.NewsAdopter
+import com.example.retrofitdemo.apiService.NewsService
+import com.example.retrofitdemo.models.News
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
