@@ -4,67 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activitys.MainActivity">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/newsList"
-        android:layout_width="0dp"
-        android:layout_height="250dp"
+    tools:context=".activitys.SecondActivity">
+    <TextView
+        android:id="@+id/textVIewAlbumID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/textview"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textVIew"
+        android:id="@+id/textVIewId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:hint="@string/textview2"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/newsList" />
+        app:layout_constraintTop_toBottomOf="@id/textVIewAlbumID" />
 
     <TextView
-        android:id="@+id/textVIew2"
+        android:id="@+id/txtViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:hint="@string/textview3"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textVIew" />
+        app:layout_constraintTop_toBottomOf="@id/textVIewId" />
 
-    <TextView
-        android:id="@+id/textVIew3"
+    <ImageView
+        android:id="@+id/txtViewUrl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:hint="@string/textview4"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textVIew2" />
-
-    <TextView
-        android:id="@+id/textVIew4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textVIew3" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textVIew4"
-        android:id="@+id/editId"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editId"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/btnAdd"
-        android:text="Add data"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-
+        app:layout_constraintTop_toBottomOf="@id/txtViewTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

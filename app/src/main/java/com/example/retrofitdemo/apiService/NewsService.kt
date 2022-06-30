@@ -1,6 +1,8 @@
 package com.example.retrofitdemo.apiService
 
+import android.util.Log
 import com.example.retrofitdemo.models.News
+import com.example.retrofitdemo.models.UserData
 import com.example.retrofitdemo.models.UserPost
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -19,11 +21,28 @@ interface NewsInterface {
     @GET("v2/top-headlines?apiKey=$API_KEY")
     fun getHeadline(@Query("country") country: String, @Query("page") page: Int): Call<News>
 
+
+
     //https://jsonplaceholder.typicode.com/posts
+    @FormUrlEncoded
     @POST("posts")
     fun sendUserData(
-      @Body userPost: UserPost
+//      @Body userPost: UserPost
+    @Field("id")id: Int,
+    @Field("userId")userId: Int,
+    @Field("title")title: String,
+    @Field("body")body: String
     ):Call<UserPost>
+
+    @Multipart
+    @POST("photos")
+    fun sendPhotos(
+        @Part("albumID", encoding = "8-bit") albumID: Int,
+        @Part("id", encoding = "8-bit") id: Int,
+        @Part("title", encoding = "8-bit") title: String,
+        @Part("url", encoding = "8-bit") url: String,
+        @Part("thumbnailURL", encoding = "8-bit") thumbnailURL: String,
+    ):Call<UserData>
 
     @DELETE("posts/{id}")
     fun delete(
@@ -37,26 +56,32 @@ interface NewsInterface {
     ):Call<UserPost>
 }
 
-object NewsService {
-    val newsInstance: NewsInterface
-    val newsInstance2: NewsInterface
+//singleton retrofit client
+class RetrofitsClient {
+    companion object {
+        private var instance : Api? = null
+        private var retroFitInstance : Retrofit? = null
 
-    init {
-        val retrofit =
-            Retrofit.Builder()
-                .baseUrl(BASE_URL)
+        fun retroInstance() : Retrofit{
+            if (retroFitInstance ==  null){
+                return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-        newsInstance = retrofit.create(NewsInterface::class.java)
-
-        val retrofits2 =
-            Retrofit.Builder()
                 .baseUrl(BASE_URL2)
-                .addConverterFactory(GsonConverterFactory.create())
                 .build()
+            }
+                return retroFitInstance as Retrofit
+        }
 
-        newsInstance2 = retrofits2.create(NewsInterface::class.java)
+        @Synchronized
+        fun getInstance(): Api {
+           // Log.d("WebAccess", "Creating retrofit client")
+            if (instance == null){
 
+                instance = retroInstance().create(Api::class.java)
+            }
+           // Log.d("WebAccess", getInstance().toString())
+            return instance as Api
+
+        }
     }
 }
