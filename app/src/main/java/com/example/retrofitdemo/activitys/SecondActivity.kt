@@ -1,12 +1,10 @@
 package com.example.retrofitdemo.activitys
 
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.retrofitdemo.R
-import com.example.retrofitdemo.apiService.RetrofitClient
 import com.example.retrofitdemo.apiService.RetrofitsClient
 import com.example.retrofitdemo.models.UserData
 import retrofit2.Call

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitdemo.R
 import com.example.retrofitdemo.adopters.NewsAdopter
-import com.example.retrofitdemo.apiService.RetrofitClient
 import com.example.retrofitdemo.apiService.RetrofitsClient
 import com.example.retrofitdemo.models.News
 import com.example.retrofitdemo.models.UserPost
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity() {
          txt3 = findViewById(R.id.textVIew3)
          txt4 = findViewById(R.id.textVIew4)
         buttonSignup = findViewById(R.id.btnAdd)
-        getNews()
+        //getNews()
         sendUserpost()
         deletePost()
         buttonSignup.setOnClickListener {
@@ -75,34 +74,34 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun getNews() {
-        val news = RetrofitClient.instance.getHeadline("in",1)
-        news.enqueue(object : Callback<News>{
-            override fun onResponse(call: Call<News>, response: Response<News>) {
-                val news = response.body()
-                if (news != null){
-                    Log.d("TAG___>",news.toString())
-                    adopter = NewsAdopter(this@MainActivity,news.articles)
-                    newsList = findViewById(R.id.newsList)
-                    newsList.adapter = adopter
-                    newsList.layoutManager = LinearLayoutManager(this@MainActivity)
-                    //comment dd
-                }
-            }
-
-            override fun onFailure(call: Call<News>, t: Throwable) {
-                Log.d("TAG___>","Error in fatcing api",t)
-            }
-
-        })
-    }
+//    private fun getNews() {
+//        val news = RetrofitClient.instance.getHeadline("in",1)
+//        news.enqueue(object : Callback<News>{
+//            override fun onResponse(call: Call<News>, response: Response<News>) {
+//                val news = response.body()
+//                if (news != null){
+//                    Log.d("TAG___>",news.toString())
+//                    adopter = NewsAdopter(this@MainActivity,news.articles)
+//                    newsList = findViewById(R.id.newsList)
+//                    newsList.adapter = adopter
+//                    newsList.layoutManager = LinearLayoutManager(this@MainActivity)
+//                    //comment dd
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<News>, t: Throwable) {
+//                Log.d("TAG___>","Error in fatcing api",t)
+//            }
+//
+//        })
+//    }
 
     private fun sendUserpost(){
         val retrofitData = RetrofitsClient.getInstance().sendUserData(202,230,"TitleNew ","BodyNew")
         Log.d("WebAccess", RetrofitsClient.getInstance().toString())
         retrofitData.enqueue(object : Callback<UserPost>{
             override fun onResponse(call: Call<UserPost>, response: Response<UserPost>) {
-               var reposeBody = response.body()
+               val reposeBody = response.body()
                // textView.text = response.code().toString()
                 reposeBody?.apply {
                     textView.text = id.toString()
