@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         sendUserpost()
         deletePost()
         buttonSignup.setOnClickListener {
-           val intent = Intent(this,SecondActivity::class.java)
+           val intent = Intent(this,ApiTaskActivity::class.java)
             startActivity(intent)
 
         }
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 //                if (news != null){
 //                    Log.d("TAG___>",news.toString())
 //                    adopter = NewsAdopter(this@MainActivity,news.articles)
-//                    newsList = findViewById(R.id.newsList)
+//                    ne    wsList = findViewById(R.id.newsList)
 //                    newsList.adapter = adopter
 //                    newsList.layoutManager = LinearLayoutManager(this@MainActivity)
 //                    //comment dd

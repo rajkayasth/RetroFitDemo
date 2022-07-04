@@ -1,12 +1,18 @@
 package com.example.retrofitdemo.apiService
 
-import com.example.retrofitdemo.models.News
-import com.example.retrofitdemo.models.UserData
-import com.example.retrofitdemo.models.UserPost
+import com.example.retrofitdemo.models.*
 import retrofit2.Call
 import retrofit2.http.*
 
 interface Api {
+
+
+    @GET("timeseries")
+    fun getData(@Query("start_date") start_date:String ,
+                @Query("end_date") end_date :String ,
+                @Query("base") base: String
+                ) :
+            Call<APIData>
 
     @GET("v2/top-headlines?apiKey=$API_KEY")
     fun getHeadline(@Query("country") country: String, @Query("page") page: Int): Call<News>
